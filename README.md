@@ -87,5 +87,8 @@ Now when incremental parsing have been enabled, Escaya will reuse nodes from the
 The abstract syntax tree (AST) used by `Escaya` is [ECMAScript® 2021 compatible](https://tc39.es/ecma262/index.html) and
 have been designed for performance. It nearly eliminates the chance of accidentally creating an AST that does not represent an ECMAScript program and it consumes less bytes than the AST produced by `ESTree` and `Babel`.
 
-The `Escaya AST` doesn't try to follow the SpiderMonkey-compatible standard that `ESTree` are strictly
-following. 
+The `Escaya AST` doesn't try to follow the SpiderMonkey-compatible standard that `ESTree` are strictly following. 
+
+## CLI
+
+TODO
