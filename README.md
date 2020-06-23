@@ -77,9 +77,7 @@ However, Escaya will continue to do a full parse for every keystroke. To avoid t
 
 import { recovery, update } from './escaya';
 
-const text = '(foo);';
-
-const rootNode = recovery(text, 'filename.js', { module: true }); // option for parsing in module goal in recovery
+const rootNode = recovery('(foo);', 'filename.js', { module: true }); 
 
 const ast = update(rootNode, '=> bar;', 'filename.js', { span: { start: 6, length: 0 }, newLength: 7 })
 
@@ -93,6 +91,11 @@ The options for the recovery mode  are about the same as  for `parseScript` and 
 
 No options can be set during an incremental update because it's only possible to reuse a node if it was parsed in the same context that we're currently in. 
 
+### AST
+
+One of the design goals for Escaya has been that the AST shouldn't change. It should be the same either you are parsing in `normal mode` or `recovery mode`.But there are a couple of exceptions. In `recovery mode` you are creating a `RootNode` instead of either a `Module` or `Script`, and this `RootNode` has additional information such as diagnosticks, context masks and mutal parser flags that you *carry over* from the recovery mode to the incremental parsing and let you continue to parse in the same context that you are currently in unless you set a strict directive on the `RootNode`.
+
+If you do this, Escaya will parse in strict mode and you will not be able to recover any nodes from the old tree if you were first parsing in *sloppy mode*.
 
 ## Escaya AST
 
