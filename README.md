@@ -9,6 +9,8 @@
     <a href="https://github.com/escaya/escaya/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/escaya/escaya.svg" alt="License" /></a>
 </p>
 
+**Work in progress**
+
 ## Features
 
 * Conforms to the standard ECMAScript® 2021 (ECMA-262 11th Edition) language specification
