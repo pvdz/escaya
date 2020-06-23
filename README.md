@@ -24,6 +24,7 @@ Still to early to release the source file to public, but a demo can be found [he
 * Error recovery mode with incremental parsing support
 * No backtracking
 * Low memory usage
+* Optimized for use on handheld devices such as a mobile phone or tablet
 * Very well tested (~15 000 unit tests with full code coverage)
 * Lightweight - ~84 KB minified
 
@@ -95,10 +96,9 @@ No options can be set during an incremental update because it's only possible to
 
 ## Escaya AST
 
-The abstract syntax tree (AST) used by `Escaya` is [ECMAScript® 2021 compatible](https://tc39.es/ecma262/index.html) and
-have been designed for performance. It nearly eliminates the chance of accidentally creating an AST that does not represent an ECMAScript program and it consumes less bytes than the AST produced by `ESTree` and `Babel`.
+The abstract syntax tree (AST) used by `Escaya` represents the structure of an ECMAScript program as a tree and conforms to the [ECMAScript® 2021 specification](https://tc39.es/ecma262/index.html). The AST have been designed for performance, and it nearly eliminates the chance of accidentally creating an AST that does not represent an ECMAScript program and it consumes less bytes than the AST produced by `ESTree` and `Babel`.
 
-The `Escaya AST` doesn't try to follow the SpiderMonkey-compatible standard that `ESTree` are strictly following. 
+The `Escaya AST` doesn't try to follow the SpiderMonkey-compatible standard that `ESTree` strictly follows, and it distinguish `Identifier` from `IdentifierPattern` and makes it easier to calculate the free variables of a program. 
 
 ## CLI
 
