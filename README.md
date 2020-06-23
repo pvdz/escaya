@@ -82,6 +82,13 @@ const ast = update(rootNode, '=> bar;', 'filename.js', { span: { start: 6, lengt
 
 Now when incremental parsing have been enabled, Escaya will reuse nodes from the old tree if possible.
 
+### Options
+
+The options for the recovery mode  are about the same as  for `parseScript` and `parseScript` except you have to enable `{module: true}` if parsing in module goal.
+
+No options can be set during an incremental update because it's only possible to reuse a node if it was parsed in the same context that we're currently in. 
+
+
 ## Escaya AST
 
 The abstract syntax tree (AST) used by `Escaya` is [ECMAScript® 2021 compatible](https://tc39.es/ecma262/index.html) and
