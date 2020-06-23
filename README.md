@@ -9,7 +9,11 @@
     <a href="https://github.com/escaya/escaya/blob/master/LICENSE.md"><img src="https://img.shields.io/github/license/escaya/escaya.svg" alt="License" /></a>
 </p>
 
+
 **Work in progress**
+
+Still to early to release the source file to public, but a demo can be found [here](https://escaya.github.io/escaya/).
+
 
 ## Features
 
