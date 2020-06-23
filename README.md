@@ -84,7 +84,7 @@ Now when incremental parsing have been enabled, Escaya will reuse nodes from the
 
 ### Options
 
-The options for the recovery mode  are about the same as  for `parseScript` and `parseScript` except you have to enable `{module: true}` if parsing in module goal.
+The options for the recovery mode  are about the same as  for `parseScript` and `parseModule` except you have to enable `{module: true}` if parsing in module goal.
 
 No options can be set during an incremental update because it's only possible to reuse a node if it was parsed in the same context that we're currently in. 
 
