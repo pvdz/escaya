@@ -22,6 +22,7 @@ Still to early to release the source file to public, but a demo can be found [he
 * Optionally track syntactic node locations
 * Emits an ECMAScript® 2021 compatible abstract syntax tree
 * Error recovery mode with incremental parsing support
+* JSON friendly
 * No backtracking
 * Low memory usage
 * Optimized for use on handheld devices such as a mobile phone or tablet
