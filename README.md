@@ -12,7 +12,7 @@
 
 **Work in progress**
 
-Still to early to release the source file to public, but a demo can be found [here](https://escaya.github.io/escaya/).
+Still too early to release the source file to public, but a demo can be found [here](https://escaya.github.io/escaya/).
 
 
 ## Features
@@ -84,7 +84,7 @@ const ast = update(rootNode, '=> bar;', 'filename.js', { span: { start: 6, lengt
 
 ```
 
-Now when incremental parsing have been enabled, Escaya will reuse nodes from the old tree if possible.
+Now when incremental parsing has been enabled, Escaya will reuse nodes from the old tree if possible.
 
 ### Options
 
@@ -94,17 +94,16 @@ No options can be set during an incremental update because it's only possible to
 
 ### AST
 
-One of the design goals for Escaya has been that the AST shouldn't change. It should be the same either you are parsing in `normal mode` or `recovery mode`.But there are a couple of exceptions. In `recovery mode` you are creating a `RootNode` instead of either a `Module` or `Script`, and this `RootNode` has additional information such as diagnostics, context masks and mutal parser flags that you *carry over* from the recovery mode to the incremental parsing and let you continue to parse in the same context that you are currently in unless you set a strict directive on the `RootNode`.
+One of the design goals for Escaya has been that the abstract syntax tree (AST) shouldn't change. It should be the same either you are parsing in `normal mode` or `recovery mode` but there are a couple of exceptions.
 
-If you do this, Escaya will parse in strict mode and you will not be able to recover any nodes from the old tree if you were first parsing in *sloppy mode*, because
-it's only possible to reuse a node if it was parsed in the same context that the parser are currently in.
+For example, in `recovery mode` you are creating a `RootNode` instead of either a `Module` or `Script`. This `RootNode` has additional information such as diagnostics, context masks and mutal parser flags that you *carry over* from the recovery mode to the incremental parsing and let you continue to parse in the same context that you are currently in, unless you set a strict directive on the `RootNode`. If you do this, Escaya will parse in strict mode and you will not be able to recover any nodes from the old tree if you were first parsing in *sloppy mode*, because it's only possible to reuse a node if it was parsed with the same context that the parser used before.
 
 ## Escaya AST
 
-The abstract syntax tree (AST) used by `Escaya` represents the structure of an ECMAScript program as a tree and conforms to the [ECMAScript® 2021 specification](https://tc39.es/ecma262/index.html). The AST have been designed for performance, and it nearly eliminates the chance of accidentally creating an AST that does not represent an ECMAScript program and it consumes less bytes than the AST produced by `ESTree` and `Babel`.
+The AST used by `Escaya` represents the structure of an ECMAScript program as a tree and conforms to the [ECMAScript® 2021 specification](https://tc39.es/ecma262/index.html). The AST has been designed for performance and it nearly eliminates the chance of accidentally creating an AST that does not represent an ECMAScript program while also requiring fewer bytes than the AST produced by `ESTree` and `Babel`.
 
-The `Escaya AST` doesn't try to follow the SpiderMonkey-compatible standard that `ESTree` strictly follows, and it distinguish `Identifier` from `IdentifierPattern` and makes it easier to calculate the free variables of a program. 
+The `Escaya AST` doesn't try to follow the SpiderMonkey-compatible standard that `ESTree` strictly follows. For example it distinguish `Identifier` from `IdentifierPattern`. That makes it easier to calculate the free variables of a program. 
 
 ## CLI
 
-The CLI is still a TODO, but will parse Escaya in recovery mode and use the diagnostic messages to create an nice output so that you are always informed of invalid syntax and you can correct this.
+The CLI is still a TODO, but will parse Escaya in recovery mode and use the diagnostic messages to create an nice output so that you are always informed of invalid syntax so you can correct this.
